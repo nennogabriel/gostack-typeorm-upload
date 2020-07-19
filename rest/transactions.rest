@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:3333
+
+@thisUrl = {{baseUrl}}/transactions
+
+###
+GET {{thisUrl}}
+
+
+###
+POST {{thisUrl}}
+Content-Type: application/json
+
+{
+  "title": "March Salary",
+  "type": "income",
+  "value": 4000,
+  "category": "Salary"
+}
+
+###
+POST {{thisUrl}}
+Content-Type: application/json
+
+{
+  "title": "April Salary",
+  "type": "income",
+  "value": 4000,
+  "category": "Salary"
+}
+
+###
+POST {{thisUrl}}
+Content-Type: application/json
+
+{
+  "title": "Mackbook",
+  "value": 6000,
+  "type": "outcome",
+  "category": "Eletronics"
+}
+
+
+###
+DELETE {{thisUrl}}/d2563ca0-af28-4435-babe-c4d578b1a9b4
+
+###
+POST {{thisUrl}}/import
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="file"; filename="import_template.csv"
+Content-Type: application/octet-stream
+
+< ../src/__tests__/import_template.csv
+--MyBoundary--
+
+
